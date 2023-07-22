@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Note } from "../types";
 import { RootState } from "../app/store";
-import { fetchAllNotes, addNewNote, editSingleNote, deleteSingleNote } from "../api/NotesService";
+import {
+  fetchAllNotes,
+  addNewNote,
+  editSingleNote,
+  deleteSingleNote,
+} from "../api/NotesService";
 
 const initialState = {
   notes: [] as Note[],
@@ -12,11 +17,7 @@ const initialState = {
 const notesSlice = createSlice({
   name: "notes",
   initialState: initialState,
-  reducers: {
-    // addNote(state, action) {
-    //   state.notes.push(action.payload.note);
-    // },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchNotes.pending, (state, action) => {
@@ -59,7 +60,6 @@ export const selectNoteById = (state: RootState, noteId: string | undefined) =>
 
 export const fetchNotes = createAsyncThunk("notes/fetchNotes", async () => {
   const response = await fetchAllNotes();
-  console.log(response);
   return response;
 });
 

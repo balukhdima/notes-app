@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { NotesList, NoteView, Footer, AddEditNoteForm } from "../components/index";
+import { NotesList, NoteView, Footer, AddEditNoteForm } from "../components";
 
 function App() {
   return (

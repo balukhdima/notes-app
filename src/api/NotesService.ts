@@ -20,7 +20,6 @@ export const addNewNote = async (note: Note) => {
     body: JSON.stringify(note),
   }).then((response) => {
     alert("Note was successfully created!");
-    console.log("response", response);
     return response.json();
   });
 };
