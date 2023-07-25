@@ -20,12 +20,8 @@ const notesSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchNotes.pending, (state, action) => {
-        state.status = "loading";
-      })
       .addCase(fetchNotes.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.notes = state.notes.concat(action.payload);
+        state.notes = action.payload;
       })
       .addCase(addNote.fulfilled, (state, action) => {
         state.notes.push(action.payload);

@@ -19,14 +19,14 @@ const AddEditNoteForm = () => {
   ) || {}) as Note;
   const dispatch: AppDispatch = useDispatch();
 
-  const onSubmit = (data: Note) => {
+  const onSubmit = async (data: Note) => {
     if (noteId) {
-      dispatch(editNote(data));
+      await dispatch(editNote(data));
       navigate(`/note/${noteId}`);
       return;
     }
 
-    dispatch(addNote(data));
+    await dispatch(addNote(data));
     navigate("/");
   };
 
