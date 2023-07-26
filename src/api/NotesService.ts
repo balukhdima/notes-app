@@ -46,7 +46,7 @@ export const deleteSingleNote = async (id: string) => {
     method: "DELETE",
   })
     .then((response) => {
-      alert("Note was successfully deleted!");
+      // alert("Note was successfully deleted!");
 
       return response.json();
     })

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { type Note } from "../types";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ const NotesList = () => {
     }
   }, [noteStatus, dispatch]);
 
-  const createNoteSection = (note: Note, index: number) => {
+  const createNoteSection = useCallback((note: Note, index: number) => {
     return (
       <div
         key={index}
@@ -33,7 +33,7 @@ const NotesList = () => {
         <p className="px-2 opacity-50 truncate">{note.description}</p>
       </div>
     );
-  };
+  }, [notes]);
 
   return (
     <>
@@ -49,7 +49,7 @@ const NotesList = () => {
       </Link>
 
       <div className="grid gap-4 grid-cols-3 py-8 px-12">
-        {notes.map((note, index) => createNoteSection(note, index))}
+        {notes?.map((note, index) => createNoteSection(note, index)) || "No notes available"} 
       </div>
     </>
   );
