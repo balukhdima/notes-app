@@ -10,13 +10,13 @@ const NotesList = () => {
   const notes = useSelector(selectNotes) as Note[];
   const dispatch: AppDispatch = useDispatch();
 
-  const noteStatus = useSelector((state: RootState) => state.notes.status);
+  const notesStatus = useSelector((state: RootState) => state.notes.status);
 
   useEffect(() => {
-    if (noteStatus === "idle") {
+    if (notesStatus === "idle") {
       dispatch(fetchNotes());
     }
-  }, [noteStatus, dispatch]);
+  }, [notesStatus, dispatch]);
 
   const createNoteSection = useCallback((note: Note, index: number) => {
     return (

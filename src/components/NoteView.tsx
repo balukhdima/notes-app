@@ -18,8 +18,9 @@ const NoteView = () => {
   const dispatch: AppDispatch = useDispatch();
 
   async function handleDelete(note: Note) {
-    navigate("/");
+    navigate("/loading");
     await dispatch(deleteNote(note));
+    navigate("/");
   }
 
   return (
