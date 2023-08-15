@@ -38,9 +38,10 @@ const AddEditNoteForm = () => {
     values: { ...currentNote },
   });
 
-  const validateClass = classNames({
-    "border-red-600": errors.title,
-  });
+  const validateClass = (fieldName: keyof Note) =>
+    classNames({
+      "border-red-600": errors[fieldName],
+    });
 
   return (
     <>
@@ -55,7 +56,7 @@ const AddEditNoteForm = () => {
               Title
             </label>
             <input
-              className={`resize-none w-full px-4 py-2 rounded-lg border border-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 ${validateClass}`}
+              className={`resize-none w-full px-4 py-2 rounded-lg border border-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 ${validateClass("title")}`}
               type="text"
               placeholder="Title..."
               {...register("title", {
@@ -74,7 +75,7 @@ const AddEditNoteForm = () => {
               })}
               rows={5}
               placeholder="Description..."
-              className={`resize-none w-full px-4 py-2 rounded-lg border border-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 ${validateClass}`}
+              className={`resize-none w-full px-4 py-2 rounded-lg border border-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 ${validateClass("description")}`}
             />
 
             <div className="flex justify-end w-full">
